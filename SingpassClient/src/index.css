@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .nav-item {
+    @apply cursor-pointer py-1 relative hover:text-gray-800 hover:font-bold after:absolute after:bottom-0 after:left-0 after:bg-gradient-to-r from-violet-600 via-red-500 to-yellow-500 after:h-0.5 after:w-0 hover:after:w-full after:transition-all after:duration-300 after:ease-in-out 
+  }
+
+  /* Background */
+  .bg-gradient-primary{
+    @apply bg-[#f8516d] 
+  }
+  .bg-correct{
+    @apply bg-[#2ecc71] 
+  }
+  .bg-wrong{
+    @apply bg-[#e74c3c] 
+  }
+  .bg-gradient-secondary{
+    @apply bg-gradient-to-r from-violet-500 via-indigo-500 to-blue-500 
+  }
+  .bg-gradient-tertiary{
+    @apply bg-gradient-to-r from-green-500 via-teal-500 to-cyan-500 
+  }
+  .bg-gradient-quaternary{
+    @apply bg-gradient-to-r from-rose-400 via-red-400 to-pink-400
+  }
+
+  /* Button */
+  .btn-ct-primary { 
+    @apply cursor-pointer rounded-full text-white bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-3 flex justify-center items-center
+  }
+
+ /* Text */
+ .text-primary{
+    @apply text-[#f33a58]
+  }
+  .text-correct{
+    @apply text-[#2ecc71] 
+  }
+  .text-wrong{
+    @apply text-[#e74c3c] 
+  }
+}
