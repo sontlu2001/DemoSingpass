@@ -4,31 +4,9 @@ import Router from '@koa/router';
 import dotenv from 'dotenv';
 import { log } from 'console';
 import logger from './logger.mjs';
+import { singpassClient } from '../api/login/singpassClient.mjs';
 dotenv.config();
 
-const singpassIssuer = await Issuer.discover(process.env.ISSUER_URL);
-
-const singpassClient = new singpassIssuer.Client(
-  {
-    // All the hardcoded values used below are taken from Singpass' OpenID Provider Metadata,
-    // which can be found at config.ISSUER_URL + '/.well-known/openid-configuration'
-    client_id: process.env.CLIENT_ID,
-    response_types: ['code'],
-    token_endpoint_auth_method: 'private_key_jwt',
-    id_token_signed_response_alg: 'ES256',
-    userinfo_encrypted_response_alg: JSON.parse(process.env.KEYS_PRIVATE_ENC_KEY).alg,
-    userinfo_encrypted_response_enc: 'A256GCM',
-    userinfo_signed_response_alg: JSON.parse(process.env.KEYS_PRIVATE_SIG_KEY).alg,
-  },
-  { keys: [
-    JSON.parse(process.env.KEYS_PRIVATE_SIG_KEY), 
-    JSON.parse(process.env.KEYS_PRIVATE_ENC_KEY)
-  ] }
-);
-
-custom.setHttpOptionsDefaults({
-  timeout: 15000,
-});
 
 // This demo uses Koa for routing.
 
